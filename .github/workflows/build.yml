@@ -5,7 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   windows:
-    runs-on: windows-latest
+    runs-on: windows-2022
     timeout-minutes: 45
 
     steps:
@@ -24,10 +24,9 @@ jobs:
           if (!(Test-Path $path)) {
             throw "VST3 folder not found"
           }
-
           $plugin = Get-ChildItem $path -Filter "*.vst3"
           if (!$plugin) {
-            throw "VST3 plugin not generated"
+            throw "VST3 not generated"
           }
 
       - uses: actions/upload-artifact@v4
